@@ -1,0 +1,29 @@
+[
+  {
+    "FirstName": "John",
+    "LastName": "Doe",
+    "Address": "Lviv, Kleparivska 35, 4",
+    "Payment": 500.0,
+    "Date": "2022-01-27",
+    "AccountNumber": 1234567,
+    "Service": "Water"
+  },
+  {
+    "FirstName": "Mike",
+    "LastName": "Wiksen",
+    "Address": "Lviv, Kleparivska 40, 1",
+    "Payment": 720.0,
+    "Date": "2022-05-27",
+    "AccountNumber": 7654321,
+    "Service": "Heat"
+  },
+  {
+    "FirstName": "Nick",
+    "LastName": "Potter",
+    "Address": "Lviv, Gorodotska 120, 3",
+    "Payment": 880.0,
+    "Date": "2022-03-25",
+    "AccountNumber": 3334444,
+    "Service": "Parking"
+  }
+]

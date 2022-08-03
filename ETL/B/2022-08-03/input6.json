@@ -1,0 +1,458 @@
+[
+  [
+    {
+      "city": "Lviv",
+      "services": [
+        [
+          {
+            "name": "Water",
+            "payers": [
+              [
+                {
+                  "name": "John Doe",
+                  "payment": 500.0,
+                  "date": "2022-01-27",
+                  "account_number": 1234567
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Heat",
+            "payers": [
+              [
+                {
+                  "name": "Mike Wiksen",
+                  "payment": 720.0,
+                  "date": "2022-05-27",
+                  "account_number": 7654321
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Parking",
+            "payers": [
+              [
+                {
+                  "name": "Nick Potter",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                },
+                {
+                  "name": "Robert Tabatski",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                }
+              ]
+            ]
+          },
+          {
+            "name": "Parking",
+            "payers": [
+              [
+                {
+                  "name": "Nick Potter",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                },
+                {
+                  "name": "Robert Tabatski",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Gas",
+            "payers": [
+              [
+                {
+                  "name": "Json Nickson",
+                  "payment": 40.0,
+                  "date": "2022-07-12",
+                  "account_number": 2222111
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "city": "Lviv",
+      "services": [
+        [
+          {
+            "name": "Water",
+            "payers": [
+              [
+                {
+                  "name": "John Doe",
+                  "payment": 500.0,
+                  "date": "2022-01-27",
+                  "account_number": 1234567
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Heat",
+            "payers": [
+              [
+                {
+                  "name": "Mike Wiksen",
+                  "payment": 720.0,
+                  "date": "2022-05-27",
+                  "account_number": 7654321
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Parking",
+            "payers": [
+              [
+                {
+                  "name": "Nick Potter",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                },
+                {
+                  "name": "Robert Tabatski",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                }
+              ]
+            ]
+          },
+          {
+            "name": "Parking",
+            "payers": [
+              [
+                {
+                  "name": "Nick Potter",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                },
+                {
+                  "name": "Robert Tabatski",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Gas",
+            "payers": [
+              [
+                {
+                  "name": "Json Nickson",
+                  "payment": 40.0,
+                  "date": "2022-07-12",
+                  "account_number": 2222111
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "city": "Lviv",
+      "services": [
+        [
+          {
+            "name": "Water",
+            "payers": [
+              [
+                {
+                  "name": "John Doe",
+                  "payment": 500.0,
+                  "date": "2022-01-27",
+                  "account_number": 1234567
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Heat",
+            "payers": [
+              [
+                {
+                  "name": "Mike Wiksen",
+                  "payment": 720.0,
+                  "date": "2022-05-27",
+                  "account_number": 7654321
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Parking",
+            "payers": [
+              [
+                {
+                  "name": "Nick Potter",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                },
+                {
+                  "name": "Robert Tabatski",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                }
+              ]
+            ]
+          },
+          {
+            "name": "Parking",
+            "payers": [
+              [
+                {
+                  "name": "Nick Potter",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                },
+                {
+                  "name": "Robert Tabatski",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Gas",
+            "payers": [
+              [
+                {
+                  "name": "Json Nickson",
+                  "payment": 40.0,
+                  "date": "2022-07-12",
+                  "account_number": 2222111
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  [
+    {
+      "city": "kyiv",
+      "services": [
+        [
+          {
+            "name": "Water",
+            "payers": [
+              [
+                {
+                  "name": "John Doe",
+                  "payment": 500.0,
+                  "date": "2022-01-27",
+                  "account_number": 1234567
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Heat",
+            "payers": [
+              [
+                {
+                  "name": "Mike Wiksen",
+                  "payment": 720.0,
+                  "date": "2022-05-27",
+                  "account_number": 7654321
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Parking",
+            "payers": [
+              [
+                {
+                  "name": "Nick Potter",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                },
+                {
+                  "name": "Robert Tabatski",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                }
+              ]
+            ]
+          },
+          {
+            "name": "Parking",
+            "payers": [
+              [
+                {
+                  "name": "Nick Potter",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                },
+                {
+                  "name": "Robert Tabatski",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Gas",
+            "payers": [
+              [
+                {
+                  "name": "Json Nickson",
+                  "payment": 40.0,
+                  "date": "2022-07-12",
+                  "account_number": 2222111
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  [
+    {
+      "city": "Kyiv",
+      "services": [
+        [
+          {
+            "name": "Water",
+            "payers": [
+              [
+                {
+                  "name": "John Doe",
+                  "payment": 500.0,
+                  "date": "2022-01-27",
+                  "account_number": 1234567
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Heat",
+            "payers": [
+              [
+                {
+                  "name": "Mike Wiksen",
+                  "payment": 720.0,
+                  "date": "2022-05-27",
+                  "account_number": 7654321
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Parking",
+            "payers": [
+              [
+                {
+                  "name": "Nick Potter",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                },
+                {
+                  "name": "Robert Tabatski",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                }
+              ]
+            ]
+          },
+          {
+            "name": "Parking",
+            "payers": [
+              [
+                {
+                  "name": "Nick Potter",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                },
+                {
+                  "name": "Robert Tabatski",
+                  "payment": 880.0,
+                  "date": "2022-03-25",
+                  "account_number": 3334444
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "name": "Gas",
+            "payers": [
+              [
+                {
+                  "name": "Json Nickson",
+                  "payment": 40.0,
+                  "date": "2022-07-12",
+                  "account_number": 2222111
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  ]
+]

@@ -1,0 +1,40 @@
+[
+  [
+    {
+      "name": "JohnDoe",
+      "Payment": 500.0,
+      "Date": "2022-01-27",
+      "AccountNumber": 1234567
+    }
+  ],
+  [
+    {
+      "name": "MikeWiksen",
+      "Payment": 720.0,
+      "Date": "2022-05-27",
+      "AccountNumber": 7654321
+    }
+  ],
+  [
+    {
+      "name": "NickPotter",
+      "Payment": 880.0,
+      "Date": "2022-03-25",
+      "AccountNumber": 3334444
+    },
+    {
+      "name": "RobertTabatski",
+      "Payment": 880.0,
+      "Date": "2022-03-25",
+      "AccountNumber": 3334444
+    }
+  ],
+  [
+    {
+      "name": "JsonNickson",
+      "Payment": 40.0,
+      "Date": "2022-07-12",
+      "AccountNumber": 2222111
+    }
+  ]
+]

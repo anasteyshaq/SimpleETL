@@ -1,0 +1,70 @@
+[
+  [
+    {
+      "FirstName": "John",
+      "LastName": "Doe",
+      "Address": {
+        "City": "Lviv",
+        "AddressLine": "System.Linq.Enumerable\u002BWhereSelectEnumerableIterator\u00602[System.String,System.String]"
+      },
+      "Payment": 500.0,
+      "Date": "2022-01-27",
+      "AccountNumber": 1234567,
+      "Service": "Water"
+    }
+  ],
+  [
+    {
+      "FirstName": "Mike",
+      "LastName": "Wiksen",
+      "Address": {
+        "City": "kyiv",
+        "AddressLine": "System.Linq.Enumerable\u002BWhereSelectEnumerableIterator\u00602[System.String,System.String]"
+      },
+      "Payment": 720.0,
+      "Date": "2022-05-27",
+      "AccountNumber": 7654321,
+      "Service": "Heat"
+    }
+  ],
+  [
+    {
+      "FirstName": "Nick",
+      "LastName": "Potter",
+      "Address": {
+        "City": "Lviv",
+        "AddressLine": "System.Linq.Enumerable\u002BWhereSelectEnumerableIterator\u00602[System.String,System.String]"
+      },
+      "Payment": 880.0,
+      "Date": "2022-03-25",
+      "AccountNumber": 3334444,
+      "Service": "Parking"
+    },
+    {
+      "FirstName": "Robert",
+      "LastName": "Tabatski",
+      "Address": {
+        "City": "Kyiv",
+        "AddressLine": "System.Linq.Enumerable\u002BWhereSelectEnumerableIterator\u00602[System.String,System.String]"
+      },
+      "Payment": 880.0,
+      "Date": "2022-03-25",
+      "AccountNumber": 3334444,
+      "Service": "Parking"
+    }
+  ],
+  [
+    {
+      "FirstName": "Json",
+      "LastName": "Nickson",
+      "Address": {
+        "City": "Lviv",
+        "AddressLine": "System.Linq.Enumerable\u002BWhereSelectEnumerableIterator\u00602[System.String,System.String]"
+      },
+      "Payment": 40.0,
+      "Date": "2022-07-12",
+      "AccountNumber": 2222111,
+      "Service": "Gas"
+    }
+  ]
+]
