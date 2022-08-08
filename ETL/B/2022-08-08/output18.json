@@ -1,0 +1,32 @@
+[
+  {
+    "city": "Lviv",
+    "services": [
+      {
+        "name": "Parking",
+        "payers": [
+          {
+            "name": "Nick Potter",
+            "payment": 880.0,
+            "date": "2022-03-25",
+            "account_number": 3334444
+          }
+        ],
+        "total": 880.0
+      },
+      {
+        "name": "Gas",
+        "payers": [
+          {
+            "name": "Luke Pan",
+            "payment": 40.0,
+            "date": "2022-07-12",
+            "account_number": 2222111
+          }
+        ],
+        "total": 40.0
+      }
+    ],
+    "total": 920.0
+  }
+]

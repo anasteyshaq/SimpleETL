@@ -1,0 +1,13 @@
+2022-08-08 8:44:49 PMInvalid file: D:\anasteysha\Radency\Hometask#1\ETL\A\input1 — копия.csv
+2022-08-08 8:48:11 PM Процесс не может получить доступ к файлу "D:\anasteysha\Radency\Hometask#1\ETL\A\2.txt", так как этот файл используется другим процессом.
+2022-08-08 8:48:11 PM Перевірте чи правильно відформатовано файл. D:\anasteysha\Radency\Hometask#1\ETL\A\2.txtУ файлі має бути однакова кількість стовпчиків,розділених комою.
+2022-08-08 8:48:11 PM Invalid file: D:\anasteysha\Radency\Hometask#1\ETL\A\2.txt
+2022-08-08 8:48:14 PM Процесс не может получить доступ к файлу "D:\anasteysha\Radency\Hometask#1\ETL\A\input1.csv", так как этот файл используется другим процессом.
+2022-08-08 8:48:14 PM Перевірте чи правильно відформатовано файл. D:\anasteysha\Radency\Hometask#1\ETL\A\input1.csvУ файлі має бути однакова кількість стовпчиків,розділених комою.
+2022-08-08 8:48:14 PM Invalid file: D:\anasteysha\Radency\Hometask#1\ETL\A\input1.csv
+2022-08-08 8:50:07 PM Процесс не может получить доступ к файлу "D:\anasteysha\Radency\Hometask#1\ETL\A\data.csv", так как этот файл используется другим процессом.
+2022-08-08 8:50:07 PM Перевірте чи правильно відформатовано файл. D:\anasteysha\Radency\Hometask#1\ETL\A\data.csvУ файлі має бути однакова кількість стовпчиків,розділених комою.
+2022-08-08 8:50:07 PM Invalid file: D:\anasteysha\Radency\Hometask#1\ETL\A\data.csv
+2022-08-08 8:52:38 PM Процесс не может получить доступ к файлу "D:\anasteysha\Radency\Hometask#1\ETL\A\input3.csv", так как этот файл используется другим процессом.
+2022-08-08 8:52:38 PM Перевірте чи правильно відформатовано файл. D:\anasteysha\Radency\Hometask#1\ETL\A\input3.csvУ файлі має бути однакова кількість стовпчиків,розділених комою.
+2022-08-08 8:52:38 PM Invalid file: D:\anasteysha\Radency\Hometask#1\ETL\A\input3.csv

@@ -6,26 +6,24 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace ETL.BusinessLogic
 {
     public class ETLProcess
     {
+        FileLogger logger;
         List<FileSystemWatcher> watchers;
-        private static int _parsedFiles;
-        private static int _parsedLines;
-        private static int FoundErrors { get; set; }
+        object obj = new object();
         private string _path;
-        private static List<string> InvalidFiles { get; set; }
+        private string _currFile;
+        Meta meta = new Meta();
         public ETLProcess(string path)
         {
+
+            logger = new FileLogger(ConfigurationManager.AppSettings["path2"]);
             _path = path;
         }
-        public void Log()
-        {
 
-        }
         public void MonitorDirectory()
         {
             string[] filters = { "*.txt", "*.csv" };
@@ -38,29 +36,48 @@ namespace ETL.BusinessLogic
                 w.Changed += FileSystemWatcherCreated;
                 w.EnableRaisingEvents = true;
                 watchers.Add(w);
-
             }
         }
+
+        public void Stop()
+        {
+            foreach (var w in watchers)
+            {
+                w.EnableRaisingEvents = false;
+            }
+            logger.Log("Service has been stopped successfully");
+        }
+        public void Triggered()
+        {
+            string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
+            string path = ConfigurationManager.AppSettings["path2"] + date;
+            if (Directory.Exists(path))
+            {
+                meta.CreateFile(path);
+                Reset();
+            }
+
+        }
+
         private void FileSystemWatcherCreated(object sender, FileSystemEventArgs e)
         {
-
-            Console.WriteLine("File created!");
-            string filePath = e.FullPath;
-            try
-            {
-                Process(filePath);
-                foreach (var w in watchers)
+                _currFile = e.FullPath;
+                try
                 {
-                    w.EnableRaisingEvents = false;
+                    Process(_currFile);
+                    foreach (var w in watchers)
+                    {
+                        w.EnableRaisingEvents = false;
+                    }
                 }
-            }
-            finally
-            {
-                foreach (var w in watchers)
+                finally
                 {
-                    w.EnableRaisingEvents = true;
+                    foreach (var w in watchers)
+                    {
+                        w.EnableRaisingEvents = true;
+                    }
                 }
-            }
+            
 
         }
         public void ProcessAll()
@@ -75,86 +92,83 @@ namespace ETL.BusinessLogic
         {
 
             string type = Path.GetExtension(filePath);
-            List<User> users = new List<User>();
+            List<User> users;
             List<List<string>> rowsInCols;
             if (File.Exists(filePath))
             {
-                rowsInCols = ParseCsv(filePath);
-                if (type == ".csv")
-                {
-                    users = TransformCsv(rowsInCols);
-                    Save(ConfigurationManager.AppSettings["path2"], users);
-                    _parsedFiles++;
-                }
-                else if (type == ".txt")
-                {
-                    users = TransformTxt(rowsInCols);
-                    Save(ConfigurationManager.AppSettings["path2"], users);
-                    _parsedFiles++;
-                }
+                rowsInCols = ParseFile(filePath);
+                if (rowsInCols.Count == 0)
+                    logger.Log("Invalid file: " + filePath);
                 else
                 {
-                    InvalidFiles.Add(filePath);
+                    if (type == ".csv")
+                    {
+                        users = TransformCsv(rowsInCols);
+                        Save(ConfigurationManager.AppSettings["path2"], users);
+                        Meta.ParsedFiles++;
+                    }
+                    else if (type == ".txt")
+                    {
+                        users = TransformTxt(rowsInCols);
+                        Save(ConfigurationManager.AppSettings["path2"], users);
+                        Meta.ParsedFiles++;
+                    }
+                    else
+                        meta.InvalidFiles.Add(filePath);
                 }
-
             }
-
-
         }
         static decimal GetTotal(List<User> users)
         {
             return users.Sum(x => x.Payment);
         }
-        static void Save(string path, List<User> users)
+        void Save(string path, List<User> users)
         {
             var options = new JsonSerializerOptions() { WriteIndented = true };
             options.Converters.Add(new CustomDateTimeConverter("yyyy-MM-dd"));
 
-            //Producing the result in a specified format
             var preparedList = from item in users
-                         group item by item.Address.City into cityGroup
-                         select new
-                         {
-                             city = cityGroup.Key,
-                             services = (
-                                 from item2 in cityGroup
-                                 group item2 by item2.Service into serviceGroup
-                                 select new
-                                 {
-                                     name = serviceGroup.Key,
-                                     payers = (
-                                        from item3 in serviceGroup
-                                        select new
-                                        {
-                                            name = item3.FirstName + ' ' + item3.LastName,
-                                            payment = item3.Payment,
-                                            date = item3.Date,
-                                            account_number = item3.AccountNumber
-                                        }),
-                                     total = GetTotal(serviceGroup.ToList())
-                                 }
-                             ),
-                             total = GetTotal(cityGroup.ToList())
-                         };
+                               group item by item.Address.City into cityGroup
+                               select new
+                               {
+                                   city = cityGroup.Key,
+                                   services = (
+                                       from item2 in cityGroup
+                                       group item2 by item2.Service into serviceGroup
+                                       select new
+                                       {
+                                           name = serviceGroup.Key,
+                                           payers = (
+                                              from item3 in serviceGroup
+                                              select new
+                                              {
+                                                  name = item3.FirstName + ' ' + item3.LastName,
+                                                  payment = item3.Payment,
+                                                  date = item3.Date,
+                                                  account_number = item3.AccountNumber
+                                              }),
+                                           total = GetTotal(serviceGroup.ToList())
+                                       }
+                                   ),
+                                   total = GetTotal(cityGroup.ToList())
+                               };
 
-            //Serializing list of objects to json string
             string json = JsonSerializer.Serialize(preparedList, options);
 
-            string date = DateTime.Now.Date.ToShortDateString();
+            string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
             string currPath = path + date;
             if (!Directory.Exists(currPath))
             {
                 Directory.CreateDirectory(currPath);
             }
             int fileCount = CountJsonInFolder(currPath);
-            File.WriteAllText(currPath + @"\input" + (fileCount + 1) + ".json", json);
-        }
+                    }
         private static int CountJsonInFolder(string path)
         {
             return Directory.GetFiles(path, "*.json").Length;
         }
 
-        private static List<User> TransformCsv(List<List<string>> strings)
+        private List<User> TransformCsv(List<List<string>> strings)
         {
             List<User> users = new List<User>();
 
@@ -163,11 +177,19 @@ namespace ETL.BusinessLogic
                 List<string> row = item;
                 bool isCorrect = Check(row);
                 if (isCorrect)
+                {
                     users.Add(MapLine(row));
+                    Meta.ParsedLines++;
+                }
+                else
+                {
+                    meta.InvalidFiles.Add(_currFile);
+                }
+
             }
             return users;
         }
-        private static List<User> TransformTxt(List<List<string>> strings)
+        private List<User> TransformTxt(List<List<string>> strings)
         {
             List<User> users = new List<User>();
 
@@ -176,17 +198,25 @@ namespace ETL.BusinessLogic
                 List<string> row = item;
                 bool isCorrect = Check(row);
                 if (isCorrect)
+                {
                     users.Add(MapLine(row));
+                    Meta.ParsedLines++;
+                }
+                else
+                {
+                    meta.InvalidFiles.Add(_currFile);
+                }
             }
             return users;
         }
 
         private static bool Check(List<string> strings)
         {
+            var style = NumberStyles.AllowDecimalPoint;
             bool isCorrect = true;
             if (strings.Count != 7)
             {
-                FoundErrors++;
+                Meta.FoundErrors++;
                 isCorrect = false;
             }
             else
@@ -195,32 +225,33 @@ namespace ETL.BusinessLogic
                 {
                     if (s == string.Empty)
                     {
-                        FoundErrors++;
+                        Meta.FoundErrors++;
                         isCorrect = false;
                     }
                 }
                 try
                 {
-                    if (!decimal.TryParse(strings[3], out var x))
+                    if (!decimal.TryParse(strings[3], style, CultureInfo.InvariantCulture, out var x))
                     {
                         isCorrect = false;
-                        FoundErrors++;
+                        Meta.FoundErrors++;
+
                     }
                     if (!DateTime.TryParseExact(strings[4], "yyyy-dd-MM", CultureInfo.InvariantCulture, DateTimeStyles.None, out var z))
                     {
                         isCorrect = false;
-                        FoundErrors++;
+                        Meta.FoundErrors++;
                     }
                     if (!long.TryParse(strings[5], out var y))
                     {
                         isCorrect = false;
-                        FoundErrors++;
+                        Meta.FoundErrors++;
                     }
 
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    FoundErrors++;
+                    Meta.FoundErrors++;
                     isCorrect = false;
                 }
                 catch (Exception exc)
@@ -254,39 +285,53 @@ namespace ETL.BusinessLogic
             return user;
         }
 
-
-        private List<List<string>> ParseCsv(string path, char delimeter = ',')
+        private List<List<string>> ParseFile(string path, char delimeter = ',')
         {
             var output = new List<List<string>>();
-
-            using (var csv = new CsvReader(new StreamReader(path), false, delimeter))
+            try
             {
-                while (csv.ReadNextRecord())
+                using (var csv = new CsvReader(new StreamReader(path), false, delimeter))
                 {
-                    var row = new List<string>();
-                    for (int i = 0; i < csv.FieldCount; i++)
+                    while (csv.ReadNextRecord())
                     {
-                        row.Add(csv[i]);
+                        var row = new List<string>();
+                        for (int i = 0; i < csv.FieldCount; i++)
+                        {
+                            row.Add(csv[i]);
+                        }
+
+                        output.Add(row);
                     }
-                    output.Add(row);
                 }
+                try
+                {
+                    if (File.Exists(path))
+                        File.Delete(path);
+                }
+                catch
+                {
+                    logger.Log("Файл " + path + "не вдалось обробити. Спробуйте перезапустити сервіс.");
+                }
+                
             }
-            File.Delete(path);
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+                logger.Log("Перевірте чи правильно відформатовано файл. " + path+  "У файлі має бути однакова кількість стовпчиків," +
+                    "розділених комою.");
+                meta.InvalidFiles.Add(path);
+                return new List<List<string>>();
+            }            
             return output;
         }
-
-        private static void PrintException(Exception ex)
+        public void Reset()
         {
-            if (ex != null)
-            {
-                Console.WriteLine($"Message: {ex.Message}");
-                Console.WriteLine("Stacktrace:");
-                Console.WriteLine(ex.StackTrace);
-                Console.WriteLine();
-                PrintException(ex.InnerException);
-            }
+            Meta.ParsedFiles = 0;
+            Meta.ParsedLines = 0;
+            meta.InvalidFiles = new List<string>();
+            Meta.FoundErrors = 0;
         }
     }
-}
 
+}
 
