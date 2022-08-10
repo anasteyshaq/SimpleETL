@@ -162,6 +162,7 @@ namespace ETL.BusinessLogic
                 Directory.CreateDirectory(currPath);
             }
             int fileCount = CountJsonInFolder(currPath);
+            File.WriteAllText(currPath + @"\input" + (fileCount + 1) + ".json", json);
                     }
         private static int CountJsonInFolder(string path)
         {
